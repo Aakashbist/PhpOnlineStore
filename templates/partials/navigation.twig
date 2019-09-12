@@ -1,0 +1,21 @@
+
+
+
+<div class="navbar navbar-dark bg-success navbar-expand-lg sticky-top">
+    <a href="index.php" class="navbar-brand">OnlineStore</a>
+    <button class="navbar-toggler" data-target="#main-nav" data-toggle="collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="form-inline"  method="get" action="search.php">
+        <input type="search" name="query" placeholder="Search" class="form-control  mr-sm-2">
+        <button class="btn btn-outline-secondary text-white btn-sm " type="submit">Search</button>
+    </form>
+    <div class="collapse navbar-collapse" id="main-nav">
+        <nav class="nav navbar-nav">
+        {% for item in navigation.navigation %}
+            {% set active = ( item.url == navigation.active ) ? 'active' : '' %}
+            <a class="nav-link {{active}}" href="{{item.url}}">{{item.menu}}</a>
+        {% endfor %}
+        </nav>
+    </div>
+</div>

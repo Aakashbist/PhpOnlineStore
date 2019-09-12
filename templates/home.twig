@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    {% include 'partials/head.twig' %}
+    <body >
+    
+    {% include 'partials/navigation.twig' %}
+        <main class="container-fluid" style="padding-top:30px;">
+            <div class="row">
+                <div class="col-md-2 ">
+                    {% include 'partials/category.twig' %}
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                    {% set count = products | length %}
+                        <div class="col">
+                            <h6>
+                           <span class="badge badge-success">{{count}}</span>
+                           products found
+                           </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                    {% for product in products %}
+                    <div class="col-md-3 bg-light text-dark" data-id="{{product.product_id}}">
+                        <img class="img-fluid " src="images/products/products/{{product.image}}">
+                        <h3>{{product.name}}</h3>
+                        <h6>$ {{product.price}}</h6>
+                        <p>{{product.description | slice(0,50) ~ '...' }}</p>
+                        <a href="detail.php?product_id={{product.product_id}}" class="text-success">More</a> 
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </body>
+</html>

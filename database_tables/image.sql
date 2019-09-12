@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS image (
+    `image_id` INT,
+    `image_file_path` VARCHAR(13) CHARACTER SET utf8,
+    `active` INT
+);
+INSERT INTO image VALUES
+    (1,'jacket5.jpg',1),
+    (2,'t-shirt2.jpg',1),
+    (3,'t-shirt3.jpg',1),
+    (4,'t-shirt4.jpg',1),
+    (5,'t-shirt5.jpg',1),
+    (6,'jacket6.jpg',1),
+    (7,'t-shirt8.jpg',1),
+    (8,'t-shirt10.jpg',1),
+    (9,'short1.jpg',1),
+    (10,'pant1.jpg',1),
+    (11,'shoe2.jpg',1),
+    (12,'shoe3.jpg',1),
+    (13,'shoe4.jpg',1),
+    (14,'shoe5.jpg',1),
+    (15,'shoe6.jpg',1),
+    (16,'shoe7.jpg',1),
+    (17,'shoes1.jpg',1),
+    (18,'chinos1.jpg',1),
+    (19,'chinos2.jpg',1),
+    (20,'chinos3.jpg',1),
+    (21,'chinos4.jpg',1),
+    (22,'jacket1.jpg',1),
+    (23,'jacket2.jpg',1),
+    (24,'jacket3.jpg',1),
+    (25,'jacket4.jpg',1);
