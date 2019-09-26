@@ -4,6 +4,7 @@ require('vendor/autoload.php');
 // create account
 use onlineStore\Account;
 
+
 if( $_SERVER['REQUEST_METHOD']=='POST' ){
   $email = $_POST['email'];
   $password = $_POST['password'];
@@ -11,7 +12,10 @@ if( $_SERVER['REQUEST_METHOD']=='POST' ){
   //create an instance of account class
   $acc = new Account();
   $register = $acc -> register( $email, $password );
-  print_r( $register );
+  if($register['success']){
+    header("location:index.php");
+  }
+  //print_r( $register );
 }
 else{
   $register='';
