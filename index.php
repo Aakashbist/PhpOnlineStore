@@ -1,37 +1,41 @@
 <?php
 require('vendor/autoload.php');
 
-//create navigation
+use onlineStore\WishList;
+$wish_list = new WishList();
+$wish_total = $wish_list -> getWishListTotal();
+
 use onlineStore\Navigation;
 
 $nav = new Navigation();
-$navigation = $nav -> getNavigation();
+$nav_items = $nav -> getNavigation();
 
-
-//create an instance of Product class
 use onlineStore\Product;
 
-$product = new Product();
-$products = $product-> getProducts();
+$products = new Product();
+$products_result = $products -> getProducts();
 
-//create categories
 use onlineStore\Category;
 
-$category = new Category();
-$categories = $category -> getCategories();
+$cat = new Category();
+$categories = $cat -> getCategories();
 
-//create twig loader for templates
+//create twig loader
+//$loader = new \Twig\Loader\FilesystemLoader('templates');
 $loader = new Twig_Loader_Filesystem('templates');
-//create twig environment and pass the loader
-$twig = new Twig_Environment($loader);
-//call a twig template
-$template = $twig -> load('home.twig');
-//output the template and pass the data
 
-echo $template -> render( array(
-  'categories' => $categories,
-    'navigation' => $navigation,
-    'products' => $products,
-    'title' => 'Welcome to the OnlineStore'
-) );
+//create twig environment
+$twig = new Twig_Environment($loader);
+
+//load a twig template
+$template = $twig -> load('home.twig');
+
+//pass values to twig
+echo $template -> render([
+    'wish_count' => $wish_total,
+    'categories' => $categories,
+    'navigation' => $nav_items,
+    'products' => $products_result,
+    'title' => 'Hello shop'
+]);
 ?>
