@@ -20,6 +20,12 @@ if( $_SERVER['REQUEST_METHOD']=='POST' ){
 else{
   $register='';
 }
+use onlineStore\WishList;
+$wish_list = new WishList();
+$wish_total = $wish_list -> getWishListTotal();
+use onlineStore\ShoppingCart;
+$cart = new ShoppingCart();
+$cart_total = $cart -> getCartTotal();
 
 // create navigation
 use onlineStore\Navigation;
@@ -38,6 +44,8 @@ $template = $twig -> load('register.twig');
 
 echo $template -> render( array(
     'register' => $register,
+    'wish_count' => $wish_total,
+    'cart_count' => $cart_total,
     'navigation' => $navigation,
     'title' => 'Register for an account'
 ) );

@@ -4,6 +4,9 @@ require('vendor/autoload.php');
 use onlineStore\WishList;
 $wish_list = new WishList();
 $wish_total = $wish_list -> getWishListTotal();
+use onlineStore\ShoppingCart;
+$cart = new ShoppingCart();
+$cart_total = $cart -> getCartTotal();
 
 use onlineStore\Navigation;
 
@@ -14,6 +17,7 @@ use onlineStore\Product;
 
 $products = new Product();
 $products_result = $products -> getProducts();
+$featuredProducts=$products->featuredProducts();
 
 use onlineStore\Category;
 
@@ -33,9 +37,11 @@ $template = $twig -> load('home.twig');
 //pass values to twig
 echo $template -> render([
     'wish_count' => $wish_total,
+    'cart_count' => $cart_total,
     'categories' => $categories,
     'navigation' => $nav_items,
     'products' => $products_result,
+    'featuredProduct'=>$featuredProducts,
     'title' => 'Hello shop'
 ]);
 ?>

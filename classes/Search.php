@@ -21,22 +21,23 @@ class Search extends Database{
     }
     $search_param = "%" . $this -> search_query . "%";
     $query = "
-      SELECT 
-      @product_id := product.product_id as product_id,
-      product.name,
-      product.price,
-      product.description,
-      ( SELECT @image_id := product_image.image_id 
-        FROM product_image 
-        WHERE product_image.product_id = @product_id LIMIT 1 ),
-      ( SELECT image_file_path
-        FROM image 
-        WHERE image_id = @image_id ) as image
-      FROM product
-      WHERE
-      name LIKE ?
-      OR
-      description LIKE ?
+    SELECT 
+    @product_id := product.product_id as product_id,
+    product.name,
+    product.price,
+    product.description,
+    ( SELECT @image_id := product_image.image_id 
+      FROM product_image 
+      WHERE product_image.product_id = @product_id LIMIT 1 ),
+    ( SELECT image_file_path
+      FROM image 
+      WHERE image_id = @image_id ) as image
+    FROM product
+    WHERE
+    name LIKE ?
+    OR
+    description LIKE ?
+    ORDER BY product.price ASC
     ";
     $statement = $this -> connection -> prepare( $query );
     $statement -> bind_param('ss', $search_param, $search_param );

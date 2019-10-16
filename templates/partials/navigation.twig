@@ -12,10 +12,15 @@
         <button class="btn btn-outline-secondary text-white btn-sm " type="submit">Search</button>
     </form>
      <nav class="nav flex-grow-1 order-5 justify-content-end">
-        <button class="btn btn-success mr-sm-2">
+     <a class="btn btn-primary mr-sm-2" href="https://www.facebook.com/cracked.man.me?__tn__=%2CdlC-R-R&eid=ARAXnt_FWI-Z7JwmXcYlOnj2KpTB99n4LTkUMNDnUCnbO60cAKYH8wx2DXYazKJK-6_Aw1V1V7H2FBoZ&hc_ref=ARTKdPYECGJtW9xEI6TObAdXMQLbpZ_0N-UghiTEl5AYr-7cRatVEqtuYeqcXzUoiTo">
+            <i class="fa fa-facebook "></i>
+        </a>
+        
+         <a class="btn btn-success" href="cart.php">
             <i class="fa fa-shopping-basket"></i>
-            <span class="badge badge-warning">0</span>
-        </button>
+            {% set cart = (cart_count) ? cart_count : 0 %}
+            <span class="badge badge-warning">{{cart}}</span>
+        </a>
           <a class="btn btn-success mr-sm-2" href="list.php">
             <i class="fa fa-heart"></i>
             {% set wish = (wish_count) ? wish_count : 0 %}

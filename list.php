@@ -17,6 +17,7 @@ $wish_items = $wish_list -> getWishListItems();
 use onlineStore\Navigation;
 $nav = new Navigation();
 $navigation = $nav -> getNavigation();
+
 //create twig loader for templates
 $loader = new Twig_Loader_Filesystem('templates');
 //create twig environment and pass the loader

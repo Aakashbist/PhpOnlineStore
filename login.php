@@ -15,7 +15,12 @@ if( $_SERVER['REQUEST_METHOD']=='POST' ){
 else{
   $login='';
 }
-
+use onlineStore\WishList;
+$wish_list = new WishList();
+$wish_total = $wish_list -> getWishListTotal();
+use onlineStore\ShoppingCart;
+$cart = new ShoppingCart();
+$cart_total = $cart -> getCartTotal();
 //create navigation
 use onlineStore\Navigation;
 
@@ -34,6 +39,8 @@ $template = $twig -> load('login.twig');
 
 echo $template -> render( array(
     'login' => $login,
+    'wish_count' => $wish_total,
+    'cart_count' => $cart_total,
     'navigation' => $navigation,
     'title' => 'Login to your account'
 ) );

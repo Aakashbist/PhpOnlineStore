@@ -3,6 +3,7 @@ namespace onlineStore;
 use onlineStore\Database;
 class Product extends Database{
     public $products = array();
+    public $featuredProducts= array();
    public $category = null;
 
     public function __construct(){
@@ -45,6 +46,30 @@ class Product extends Database{
             }
         }
         return $this -> products;
+    }
+
+    public function featuredProducts(){
+        $query = "SELECT 
+        @product_id := product.product_id AS product_id,
+        product.name,
+        product.description,
+        product.price,
+        ( SELECT @image_id := product_image.image_id FROM product_image WHERE product_image.product_id = @product_id LIMIT 1 ) AS image_id,
+        ( SELECT image_file_path FROM image WHERE image.image_id = @image_id ) AS image
+        FROM product  where product.price <=49 ";
+
+$statement = $this -> connection -> prepare( $query );
+
+
+
+    if( $statement -> execute() ){
+        $result = $statement -> get_result();
+        while( $row = $result -> fetch_assoc() ){
+            array_push( $this -> featuredProducts, $row );
+        }
+    }
+    return $this -> featuredProducts;
+
     }
 }
 ?>

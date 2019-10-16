@@ -7,7 +7,7 @@
             {% if result.items | length > 0 %}
               <div class="row">
                 <div class="col">
-                  <h4>Your search for {{result.query}} returned {{result.items | length}} results</h4>
+                  <h4>Your search for {{result.query}} returned {{result.items | length}} results with lower to higher Price</h4>
                 </div>
               </div>
               {% for item in result.items %}
@@ -17,6 +17,7 @@
                   </div>
                   <div class="col-md-4">
                     <h4>{{item.name}}</h4>
+                    <h5 class="price">${{item.price}}</h5>
                     <p>{{item.description | slice(0,80) ~ '...' }}</p>
                     <a href="detail.php?product_id={{item.product_id}}" class="text-success">Detail</a>
                   </div>

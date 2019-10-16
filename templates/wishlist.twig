@@ -19,7 +19,7 @@
                   </div>
                   <div class="col-md-4">
                     <h4>{{item.name}}</h4>
-                    <h5 class="price">{{item.price}}</h5>
+                    <h5 class="price">${{item.price}}</h5>
                     <p>{{item.description | slice(0,120) ~ '...' }}</p>
                     <a href="detail.php?product_id={{item.product_id}}" class="btn btn-outline-success">Detail</a>
                   </div>
